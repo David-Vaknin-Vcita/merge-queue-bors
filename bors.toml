@@ -2,4 +2,4 @@ status = [ "continuous-integration/jenkins/branch","continuous-integration/jenki
 block_labels = [ "WIP" ]
 cut_body_after = "<details>"
 timeout_sec = 36000 # ten hours
-batch_delay_sec = 10
+batch_delay_sec = 11
