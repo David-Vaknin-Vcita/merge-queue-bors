@@ -1,0 +1,44 @@
+@Library('cicd-utils')_
+pipeline {
+    agent {
+        label "master"
+    }
+
+    environment {
+        BASE_REPOSITORY_URI = "184806450101.dkr.ecr.eu-west-1.amazonaws.com/base"
+        PROJECT_REPOSITORY_URI = "184806450101.dkr.ecr.eu-west-1.amazonaws.com/core"
+        SUBSTR_COMMIT ="${GIT_COMMIT}".substring(0,7)
+        PROJECT_NAME = "core"
+        HELM_CHART_PATH = "helm_chart"
+        GIT_PRIVATE_KEY = "github_private_key"
+    }
+
+    options {
+        timeout(time: 40, unit: 'MINUTES')
+        timestamps()
+        disableConcurrentBuilds()
+        ansiColor('xterm')
+        buildDiscarder(logRotator(daysToKeepStr: '30'))
+    }
+
+    parameters {
+        choice(name: 'DEST_ENVIRONMENT', choices: [ 'all-data-centers','production', 'production-eu'], description: 'Environment to deploy to. Only for master branch !' +
+                'This parameter is not taken while deploy is not from master branch(e.g integration)')
+    }
+
+    stages {
+        stage("Checking base image"){
+            steps{
+                script {
+                    echo "Checked"
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
