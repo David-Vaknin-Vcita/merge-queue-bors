@@ -34,6 +34,19 @@ pipeline {
                 }
             }
         }
+        
+        stage("Checking if need to fail"){
+            when {
+                anyOf {
+                    branch "fail-*"
+                }
+            }
+            steps{
+                script {
+                    error("I'm done...")
+                }
+            }
+        }
     }
 
     post {
