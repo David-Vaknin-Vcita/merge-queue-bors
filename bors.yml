@@ -3,3 +3,6 @@ block_labels = [ "WIP" ]
 cut_body_after = "<details>"
 timeout_sec = 36000 # ten hours
 batch_delay_sec = 10
+deploy:
+  override:
+    - ./script/deploy
