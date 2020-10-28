@@ -36,13 +36,10 @@ pipeline {
         }
         
         stage("Checking if need to fail"){
-            when {
-                anyOf {
-                    branch "fail-*"
-                }
-            }
             steps{
                 script {
+                    echo "$branch"
+                    // int depth_int = Integer.parseInt(depth_str);
                     error("I'm done...")
                 }
             }
