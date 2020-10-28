@@ -7,16 +7,15 @@ ci:
 merge:
   require:
     - continuous-integration/jenkins/pr-merge
-    - echo "im megre.require"
   ignore:
     - continuous-integration/jenkins/branch
 
 review:
   checks:
-    - echo "om review.checks"
+    - echo "im review.checks"
 
 deploy:
   override:
-    - ./script/deploy.sh
+    - /bin/sh -c script/deploy.sh
 
 
