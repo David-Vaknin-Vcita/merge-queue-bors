@@ -38,9 +38,13 @@ pipeline {
         stage("Checking if need to fail"){
             steps{
                 script {
-                    echo "$BRANCH_NAME"
-                    // int depth_int = Integer.parseInt(depth_str);
-                    error("I'm done...")
+                    if ("$BRANCH_NAME".startsWith(PR)){
+                         pr_number="$BRANCH_NAME".split("PR-")
+                         int pr_number_int = Integer.parseInt(pr_number);
+                         if ($pr_number % 2 == 0) {
+                            error("I'm done...")
+                         }
+                    }
                 }
             }
         }
