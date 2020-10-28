@@ -38,7 +38,7 @@ pipeline {
         stage("Checking if need to fail"){
             steps{
                 script {
-                    if ("$BRANCH_NAME".startsWith(PR)){
+                    if ("$BRANCH_NAME".startsWith("PR")){
                          pr_number="$BRANCH_NAME".split("PR-")
                          int pr_number_int = Integer.parseInt(pr_number);
                          if ($pr_number % 2 == 0) {
