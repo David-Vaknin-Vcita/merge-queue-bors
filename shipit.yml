@@ -1,6 +1,8 @@
 ci:
   require:
     - continuous-integration/jenkins/pr-merge
+  hide:
+    - continuous-integration/jenkins/branch    
 merge:
   ignore:
     - continuous-integration/jenkins/branch
