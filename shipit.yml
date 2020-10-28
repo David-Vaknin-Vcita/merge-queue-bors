@@ -3,17 +3,20 @@ ci:
     - continuous-integration/jenkins/pr-merge
   hide:
     - continuous-integration/jenkins/branch
+
 merge:
   require:
     - continuous-integration/jenkins/pr-merge
+    - echo "im megre.require"
   ignore:
     - continuous-integration/jenkins/branch
 
 review:
   checks:
-    - echo "will fail" && exit(1)
+    - echo "om review.checks"
+
 deploy:
   override:
-    - pwd && ls -la
+    - ./script/deploy.sh
 
 
