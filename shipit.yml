@@ -11,4 +11,4 @@ merge:
 
 deploy:
   override:
-    - ./script/deploy.sh
+    - script/deploy.sh
