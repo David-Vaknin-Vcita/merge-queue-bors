@@ -36,14 +36,15 @@ pipeline {
         }
         
         stage("Checking if need to fail"){
-            when {
-                anyOf {
-                    branch "fail-*"
-                }
-            }
             steps{
                 script {
-                    error("I'm done...")
+                    if ("$BRANCH_NAME".startsWith("PR")){
+                         pr_number="$BRANCH_NAME".split("PR-")
+                         int pr_number_int = Integer.parseInt(pr_number);
+                         if ($pr_number % 2 == 0) {
+                            error("I'm done...")
+                         }
+                    }
                 }
             }
         }
