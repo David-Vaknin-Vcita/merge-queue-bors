@@ -1,1 +1,1 @@
-# merge-queue-bors
+# merge-queue-test

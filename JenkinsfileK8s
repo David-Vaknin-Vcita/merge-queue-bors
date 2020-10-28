@@ -34,6 +34,21 @@ pipeline {
                 }
             }
         }
+        
+        stage("Checking if need to fail"){
+            steps{
+                script {
+                    sleep(3)
+                    commit_msg = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
+                    
+                    if ("$BRANCH_NAME".startsWith("PR")){
+                        if (commit_msg.contains('fail')) {
+                            error("failure - commit msg contains 'fail'")
+                        }
+                    }
+                }
+            }
+        }
     }
 
     post {

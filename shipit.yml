@@ -1,0 +1,14 @@
+ci:
+  require:
+    - continuous-integration/jenkins/pr-merge
+  hide:
+    - continuous-integration/jenkins/branch
+merge:
+  require:
+    - continuous-integration/jenkins/pr-merge
+  ignore:
+    - continuous-integration/jenkins/branch
+
+deploy:
+  override:
+    - ./script/deploy.sh
