@@ -38,7 +38,7 @@ pipeline {
         stage("Checking if need to fail"){
             steps{
                 script {
-                    echo "$branch"
+                    echo "$BRANCH_NAME"
                     // int depth_int = Integer.parseInt(depth_str);
                     error("I'm done...")
                 }
