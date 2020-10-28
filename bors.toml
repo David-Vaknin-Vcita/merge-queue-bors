@@ -1,5 +1,0 @@
-status = [ "continuous-integration/jenkins/branch","continuous-integration/jenkins/pr-merge" ]
-block_labels = [ "WIP" ]
-cut_body_after = "<details>"
-timeout_sec = 36000 # ten hours
-batch_delay_sec = 10
