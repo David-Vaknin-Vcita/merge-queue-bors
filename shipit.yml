@@ -11,4 +11,9 @@ merge:
 
 deploy:
   override:
-    - script/deploy.sh
+    - echo "im deploy.override"
+
+review:
+  checks:
+    - echo "im review.checks"
+
