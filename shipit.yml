@@ -16,6 +16,6 @@ review:
 
 deploy:
   override:
-    - ./deploy.sh
+    - ls -la script && ./deploy.sh
 
 
