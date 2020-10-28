@@ -9,11 +9,11 @@ merge:
   ignore:
     - continuous-integration/jenkins/branch
 
-deploy:
-  override:
-    - echo "im deploy.override"
-
 review:
   checks:
-    - echo "im review.checks"
+    - echo "will fail" && exit(1)
+deploy:
+  override:
+    - pwd && ls -la
+
 
