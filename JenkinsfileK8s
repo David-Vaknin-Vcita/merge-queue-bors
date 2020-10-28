@@ -39,9 +39,9 @@ pipeline {
             steps{
                 script {
                     if ("$BRANCH_NAME".startsWith("PR")){
-                         pr_number="$BRANCH_NAME".split("PR-")
+                         pr_number="$BRANCH_NAME".split("PR-")[-1]
                          int pr_number_int = Integer.parseInt(pr_number);
-                         if ($pr_number % 2 == 0) {
+                         if (pr_number_int % 2 == 0) {
                             error("I'm done...")
                          }
                     }
