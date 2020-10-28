@@ -38,14 +38,13 @@ pipeline {
         stage("Checking if need to fail"){
             steps{
                 script {
-                    sleep(5)
-                
+                    sleep(3)
+                    commit_msg = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
+                    
                     if ("$BRANCH_NAME".startsWith("PR")){
-                         pr_number="$BRANCH_NAME".split("PR-")[-1]
-                         int pr_number_int = Integer.parseInt(pr_number);
-                         if (pr_number_int % 2 == 0) {
-                            error("I'm done...")
-                         }
+                        if (commit_msg.contains('fail')) {
+                            error("failure - commit msg contains 'fail'")
+                        }
                     }
                 }
             }
