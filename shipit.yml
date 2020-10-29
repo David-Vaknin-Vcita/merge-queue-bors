@@ -12,23 +12,23 @@ merge:
 
 review:
   checks:
-    - echo "im review.checks"
+    - echo "im review.checks called `date" >> /usr/src/shipit/test.sh"
 
 
 deploy:
   pre:
-    - echo "im deploy.pre"
+    - echo "im deploy.pre called `date" >> /usr/src/shipit/test.sh"
   override:
-    - ls -la script && ./deploy.sh
+    - ls -la script && echo "im deploy.override called `date" >> /usr/src/shipit/test.sh"
 
 dependencies:
   pre:
-    - echo "im dependencies.pre"
+    - echo "im dependencies.pre  called `date" >> /usr/src/shipit/test.sh"
 
 tasks:
   test:
     action: "test"
     description: "Sometimes needed if you want the application to restart but don't want to ship any new code."
     steps:
-      - echo "im tasks.test.steps"
+      - echo "im tasks.test.steps called `date" >> /usr/src/shipit/test.sh"
 
