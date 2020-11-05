@@ -19,7 +19,7 @@ deploy:
   pre:
     - echo "im deploy.pre called `date`" >> /usr/src/shipit/test.sh
   override:
-    - ls -la script && echo "im deploy.override called `date`" >> /usr/src/shipit/test.sh
+    - ./jenkins_call_trigger.sh
 
 dependencies:
   pre:
