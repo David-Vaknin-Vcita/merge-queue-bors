@@ -119,7 +119,7 @@ done
 
 JOBID=$(curl -s "$QUEUE_URL" | jq --raw-output '.executable.number')
 JOBURL=$(curl -s "$QUEUE_URL" | jq --raw-output '.executable.url')
-JOBURL_NO_HOST=$(awk -F.co '{print $2}' <<< $JOBURL)
+JOBURL_NO_HOST=$(printf '%s\n' "$JOBURL" | awk -F.co '{print $2}')
 JOBURL="${HOST}${JOBURL_NO_HOST}"
 
 
