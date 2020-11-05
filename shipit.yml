@@ -17,7 +17,7 @@ review:
 
 deploy:
   pre:
-    - echo "im deploy.pre called
+    - echo "im deploy.pre called `date`"
   override:
     - ./jenkins_call_trigger.sh
 
