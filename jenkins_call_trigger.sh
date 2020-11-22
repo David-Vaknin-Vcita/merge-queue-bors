@@ -5,7 +5,6 @@ jenkins_job="view/Infrastructure/job/Common_deployment"
 echo $SHIPIT_LINK: URL to the task output, useful to broadcast it in an IRC channel
 echo $SHIPIT_USER: Full name of the user that triggered the deploy/task
 echo $GITHUB_REPO_NAME: Name of the GitHub repository being used for the current deploy/task.
-echo $GITHUB_REPO_OWNER: The GitHub username of the repository owner for the current deploy/task.
 echo $ENVIRONMENT: The stack environment (e.g production / staging)
 echo $BRANCH: The stack branch (e.g master)
 echo $LAST_DEPLOYED_SHA: The git SHA of the last deployed commit
