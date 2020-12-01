@@ -31,6 +31,7 @@ pipeline {
             steps{
                 script {
                     echo "Checked"
+                    publishChecks detailsURL: 'https://jenkins.eu.vchost.co', name: 'stage reporter', status: 'IN_PROGRESS', summary: 'Checking base image', text: 'ss', title: 'bb'
                 }
             }
         }
@@ -40,6 +41,7 @@ pipeline {
                 script {
                     sleep(10)
                     commit_msg = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
+                    publishChecks detailsURL: 'https://jenkins.eu.vchost.co', name: 'stage reporter', status: 'IN_PROGRESS', summary: 'Checking if need to faila', text: 'ss', title: 'bb'
                     
                     if ("$BRANCH_NAME".startsWith("PR")){
                         if (commit_msg.contains('fail')) {
@@ -53,6 +55,9 @@ pipeline {
 
     post {
         always {
+            script{
+                
+            }
             cleanWs()
         }
     }
